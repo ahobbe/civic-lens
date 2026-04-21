@@ -71,7 +71,7 @@
     --transition: all 0.5s ease;
   }
 
-/* Manual Light/Dark Mode Styles*/
+/* Light/Dark Mode Styles */
   body.light-mode {
     background-color: var(--watchdog-white);
     color: var(--truth-text);
@@ -123,10 +123,18 @@
 
 /* ///ADD/// Global Layout Styles */
 
-/* ///ADD/// Global Text Styles */
+/* Global Text Styles */
 body {
-  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-family: Source Sans, Arial, Helvetica, sans-serif;
 }
+
+h1,
+h2,
+h3 {
+  font-family: Merriweather, 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
 
 /* ///ADD/// medium styles 620px */
 
