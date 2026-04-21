@@ -69,6 +69,9 @@
     --font-heading: 'Merriweather', serif;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     --transition: all 0.5s ease;
+
+    /* Mine */
+    --button-link: 0.5625rem 0.4375rem;
   }
 
 /* Light/Dark Mode Styles */
@@ -93,48 +96,140 @@
   }
 
 /* Skip Link Styles */
-.skip-link {
-  position: absolute;
-  top: 5rem;
-  left: 50%; /* This + translateX are for horizontal centering */
-  padding: 0.25rem;
-  transform: translateX(-50%) translateY(-1000%);
-  margin: 0 auto;
-  
-  /* Styling */
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-align: center;
-  text-decoration: none;
+  .skip-link {
+    position: absolute;
+    top: 5rem;
+    left: 50%; /* This + translateX are for horizontal centering */
+    padding: var(--button-link);
+    transform: translateX(-50%) translateY(-1000%);
+    margin: 0 auto;
+    
+    /* Styling */
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
 
-  color: var(--watchdog-white);
-  background-color: var(--news-flash);
+    color: var(--watchdog-white);
+    background-color: var(--news-flash);
 
-  transition: transform 0.25s;
-}
+    transition: var(--transition);
+  }
 
-.skip-link:focus, .skip-link:hover {
-  transform: translateX(-50%) translateY(-100%);
-  color: white;
-  text-decoration: none;
-}
+  .skip-link:focus {
+    transform: translateX(-50%) translateY(-100%);
+  }
 
-/* ///ADD/// Navigation Styles */
+  .skip-link:hover { /* I know hovering is unlikely because this is for keyboard use, but adding for anyone who uses both */
+    background-color: var(--story-subtitle);
+  }
 
-/* ///ADD/// Global Layout Styles */
+  .skip-link:focus,
+  .skip-link:hover {
+    text-decoration: none;
+  }
 
-/* Global Text Styles */
-body {
-  font-family: Source Sans, Arial, Helvetica, sans-serif;
-}
+/* Navigation Styles */
+  /* I would rather have these and the skip link styles lower down, but I will leave them the way they were assigned */
+  nav label {
+    display: none; /* Temporarily out of the way */
+  }
 
-h1,
-h2,
-h3 {
-  font-family: Merriweather, 'Times New Roman', Times, serif;
-  font-weight: bold;
-}
+/* Global Styles */
+  /* Basics */
+    body {
+      /* Force footer to bottom no matter what */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
 
+      font-family: var(--font-body);
+      line-height: 1.5;
+    }
+
+  /* Limit "body" size while letting header and footer backgrounds take up the entire page */
+    header div,
+    main,
+    footer div {
+      max-width: 1048px; /* XL size is 1024px but */
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-heading);
+      font-weight: 500; /* Using Medium because Bold looks much darker than the mockup */
+      font-variation-settings: "wdth" 112; /* They also look slightly wider */
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+  /* Header/Footer */
+    /* These are essentially the same so I am lumping them together for the most part */
+    header,
+    footer {
+      color: var(--watchdog-white);
+      background-color: var(--blue-bulletin);
+    }
+
+    header nav ul,
+    footer ul {
+      display: flex;
+      gap: 1.25rem;
+
+      margin: 2rem 0 1.6875rem;
+    }
+
+    header nav a,
+    footer a {
+      padding: var(--button-link);
+      font-weight: bold;
+      text-transform: uppercase;
+
+      color: var(--watchdog-white);
+      background: var(--news-flash);
+    }
+
+    header nav a:hover,
+    header nav a:focus,
+    footer a:hover,
+    footer a:focus {
+      text-decoration: none;
+      background-color: var(--story-subtitle);
+    }
+
+    header div {
+      padding-top: 1rem;
+    }
+
+    header p {
+      font-family: var(--font-heading);
+      font-weight: bold;
+      font-stretch: semi-condensed; /* This looks skinnier to me than everything else */
+
+      line-height: 1.25;
+    }
+
+    footer {
+      margin-top: auto; /* Keep at bottom */
+    }
 
 /* ///ADD/// medium styles 620px */
 

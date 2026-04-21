@@ -29,18 +29,20 @@
     </svg>
   </button>
   <header>
-    <h1>Civic Lens</h1>
-    <p class="tagline">See Clearly. Know Deeply. Act Justly.</p>
-    <nav class="mobile-nav" aria-label="Mobile Navigation">
-      <input type="checkbox" id="menu-toggle" hidden>
-      <label for="menu-toggle" class="menu-button">Menu</label>
-      <ul class="menu">
-        <li><a href="#breaking-news">Breaking News</a></li>
-        <li><a href="#featured-articles">Featured Articles</a></li>
-        <li><a href="#alerts">Alerts</a></li>
-        <li><a href="#social">Social</a></li>
-      </ul>
-    </nav>
+    <div> <!-- Created for centering purposes -->
+      <h1>Civic Lens</h1>
+      <p class="tagline">See Clearly. Know Deeply. Act Justly.</p>
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <input type="checkbox" id="menu-toggle" hidden>
+        <label for="menu-toggle" class="menu-button">Menu</label>
+        <ul class="menu">
+          <li><a href="#breaking-news">Breaking News</a></li>
+          <li><a href="#featured-articles">Featured Articles</a></li>
+          <li><a href="#alerts">Alerts</a></li>
+          <li><a href="#social">Social</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <main id="main"> 
     <section>
@@ -153,17 +155,19 @@
     </section>
   </main>
   <footer>
-    <section id="social">
-      <h2>Follow Us</h2>
-      <ul>
-        <li><a href="https://twitter.com/">Twitter/X</a></li>
-        <li><a href="https://www.instagram.com/">Instagram</a></li>
-        <li><a href="https://www.youtube.com/">YouTube</a></li>
-        <li><a href="https://www.tiktok.com/">TikTok</a></li>
-        <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
-      </ul>
-    </section>
-    <small>&copy; 2025 Civic Lens. All rights reserved.</small>
+    <div> <!-- Created for centering purposes (same as header) -->
+      <section id="social">
+        <h2>Follow Us</h2>
+        <ul>
+          <li><a href="https://twitter.com/">Twitter/X</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="https://www.youtube.com/">YouTube</a></li>
+          <li><a href="https://www.tiktok.com/">TikTok</a></li>
+          <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+        </ul>
+      </section>
+      <small>&copy; 2025 Civic Lens. All rights reserved.</small>
+    </div>
   </footer>  
   <script>
     const body = document.body; // Moved outside of button listener so that theme can be initially set without toggling
