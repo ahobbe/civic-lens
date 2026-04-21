@@ -4,9 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /* CSS Reset */
-/* http://meyerweb.com/eric/tools/css/reset/
-  v2.0 | 20110126
-  License: none (public domain)
+  /* 
+    http://meyerweb.com/eric/tools/css/reset/
+    v2.0 | 20110126
+    License: none (public domain)
   */
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -76,13 +77,13 @@
 
 /* Light/Dark Mode Styles */
   body.light-mode {
-    background-color: var(--watchdog-white);
     color: var(--truth-text);
+    background-color: var(--watchdog-white);
   }
 
   body.dark-mode {
-    background-color: var(--truth-text);
     color: var(--watchdog-white);
+    background-color: var(--truth-text);
   }
 
   #theme-toggle {
@@ -136,50 +137,53 @@
   }
 
 /* Global Styles */
-  /* Basics */
-    body {
-      /* Force footer to bottom no matter what */
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+  body {
+    /* Force footer to bottom no matter what */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
-      font-family: var(--font-body);
-      line-height: 1.5;
-    }
+    font-family: var(--font-body);
+    line-height: 1.5;
+  }
 
-  /* Limit "body" size while letting header and footer backgrounds take up the entire page */
-    header div,
-    main,
-    footer div {
-      max-width: 1048px; /* XL size is 1024px but */
-      margin: 0 auto;
-      padding: 0 2.5rem;
-    }
+/* Limit "body" size while letting header and footer backgrounds take up the entire page */
+  header div,
+  main,
+  footer div {
+    max-width: 1035px; /* XL size is 1024px but */
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
 
-    h1,
-    h2,
-    h3 {
-      font-family: var(--font-heading);
-      font-weight: 500; /* Using Medium because Bold looks much darker than the mockup */
-      font-variation-settings: "wdth" 112; /* They also look slightly wider */
-    }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    font-weight: 500; /* Using Medium because Bold looks much darker than the mockup */
+    font-variation-settings: "wdth" 112; /* They also look slightly wider */
+  }
 
-    h1 {
-      font-size: 3rem;
-    }
+  h1 {
+    font-size: 3rem;
+  }
 
-    h2 {
-      font-size: 1.5rem;
-    }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-    a {
-      text-decoration: none;
-    }
+  h3 {
+    font-size: 1.25rem;
+  }
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
+  a {
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
 
   /* Header/Footer */
     /* These are essentially the same so I am lumping them together for the most part */
@@ -229,6 +233,70 @@
 
     footer {
       margin-top: auto; /* Keep at bottom */
+    }
+
+  /* Main */
+    main {
+      margin: 1.875rem auto;
+    }
+    
+    section {
+      margin: 0.75rem 0;
+      background-color: hotpink;
+    }
+
+    main section:first-of-type p {
+      margin-top: 0.125rem;
+    }
+
+    blockquote {
+      padding: 1.125rem 1.25rem 1.25rem;
+
+      font-family: var(--font-heading);
+      font-weight: bold;
+      font-stretch: semi-condensed; /* This also looks skinnier to me */
+      text-align: center;
+    }
+
+    article {
+      padding: 0.6875rem 1rem;
+
+      border: 0.125rem var(--truth-text) solid;
+      box-shadow: var(--shadow);
+    }
+
+    article h3 {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 0.125rem solid;
+    }
+
+    #breaking-news div {
+      display: flex;
+      flex-direction: row;
+      gap: 1.625rem;
+      margin: 1.125rem 0.5rem 2.25rem;
+    }
+
+    #breaking-news article {
+      color: var(--watchdog-white);
+      background-color: var(--news-flash);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+
+    #featured-articles div {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.625rem;
+      margin: 1.125rem 0.5rem 2.25rem;
+    }
+
+    #featured-articles article {
+      background-color: whitesmoke;
     }
 
 /* ///ADD/// medium styles 620px */
