@@ -123,35 +123,45 @@
       <p>Receive text messages with the news you want to know.</p>
       <form action="https://wp.zybooks.com/form-viewer.php" method="post">
         <!-- The CSS mockup does not make any fields appear required, but I am going to-->
-        <label for="subscriber-name">Name<span>*</span></label>
-        <input type="text" name="subscriber-name" id="subscriber-name" required>
-        
-        <label for="subscriber-phone">Mobile<span>*</span></label>
-        <input type="tel" name="subscriber-phone" id="subscriber-phone" required>
-        
+        <div>
+          <label for="subscriber-name">Name<span>*</span></label>
+          <input type="text" name="subscriber-name" id="subscriber-name" required>
+        </div>
+        <div>
+          <label for="subscriber-phone">Mobile<span>*</span></label>
+          <input type="tel" name="subscriber-phone" id="subscriber-phone" required>
+        </div>
         <fieldset>
           <legend>Notification Preferences</legend>
           
-          <input type="checkbox" name="breaking-news" id="breaking-news">
-          <label for="breaking-news">Breaking News</label>
-          
-          <input type="checkbox" name="politics" id="politics">
-          <label for="politics">Politics</label>
-          
-          <input type="checkbox" name="weather" id="weather">
-          <label for="weather">Weather</label>
-          
-          <input type="checkbox" name="sports" id="sports">
-          <label for="sports">Sports</label>
-          
-          <input type="checkbox" name="entertainment" id="entertainment">
-          <label for="entertainment">Entertainment</label>
-          
-          <input type="checkbox" name="world" id="world">
-          <label for="world">World</label>
-          
-          <input type="checkbox" name="financial" id="financial">
-          <label for="financial">Financial</label>
+          <div>
+            <input type="checkbox" name="breaking-news-notification" id="breaking-news-notification">
+            <label for="breaking-news-notification">Breaking News</label>
+          </div>
+          <div>
+            <input type="checkbox" name="politics" id="politics">
+            <label for="politics">Politics</label>
+          </div>
+          <div>
+            <input type="checkbox" name="weather" id="weather">
+            <label for="weather">Weather</label>
+          </div>
+          <div>
+            <input type="checkbox" name="sports" id="sports">
+            <label for="sports">Sports</label>
+          </div>
+          <div>
+            <input type="checkbox" name="entertainment" id="entertainment">
+            <label for="entertainment">Entertainment</label>
+          </div>
+          <div>
+            <input type="checkbox" name="world" id="world">
+            <label for="world">World</label>
+          </div>
+          <div>
+            <input type="checkbox" name="financial" id="financial">
+            <label for="financial">Financial</label>
+          </div>
         </fieldset>
         
         <input type="submit" name="submit-to-subscribe" value="Subscribe">
@@ -172,7 +182,7 @@
       </section>
       <small>&copy; 2025 Civic Lens. All rights reserved.</small>
     </div>
-  </footer>  
+  </footer>
   <script>
     const body = document.body; // Moved outside of button listener so that theme can be initially set without toggling
     const toggleButton = document.getElementById('theme-toggle');
