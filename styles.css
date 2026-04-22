@@ -152,7 +152,7 @@
   header div,
   main,
   footer div {
-    max-width: 1035px; /* XL size is 1024px but */
+    max-width: 1035px; /* This was the size necessary to match the mockup according to me eyeballing it */
     margin: 0 auto;
     padding: 0 2.5rem;
   }
@@ -241,7 +241,9 @@
     }
 
     footer ul {
-      margin-top: 0.75rem;
+      margin: 0.75rem 0;
+      flex-wrap: wrap;
+      row-gap: 2.25rem;
     }
 
     footer small {
@@ -297,7 +299,7 @@
 
       #breaking-news div {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 1.625rem;
         margin: 1.125rem 0.5rem 2.25rem;
       }
@@ -316,7 +318,7 @@
 
       #featured-articles div {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.625rem;
         margin: 1.125rem 0.5rem 2.25rem;
       }
@@ -324,7 +326,7 @@
     /* Form */
     form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1rem 0.375rem;
 
       margin: 0.5rem 0.5rem 2rem;
@@ -357,7 +359,7 @@
       grid-column: 1 / -1;
 
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 1rem;
       padding: 0.25rem 0.25rem 0.75rem;
 
@@ -409,17 +411,74 @@
       background: var(--story-subtitle);
     }
 
-/* ///ADD/// medium styles 620px */
+/* All sizing adjustments are purely vibes based and have 0 logical backing */
+/* Medium styles 620px */
+  @media screen and (min-width: 620px) {
+    #featured-articles div {
+      grid-template-columns: 1fr 1fr;
+    }
 
+    fieldset {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
-/* ///ADD/// large styles 920px */
+/* Large styles 920px */
+  @media screen and (min-width: 920px) {
+    #breaking-news div {
+      flex-direction: row;
+    }
 
+    form {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
-/* ///ADD/// x-large styles 1024px */
+/* XL styles 1024px */
+  @media screen and (min-width: 1024px) {
+    #featured-articles div {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
+    fieldset {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 
-/* ///ADD/// Interaction Queries for color scheme light and dark and motion preference */
+/* Interaction queries for color scheme light and dark and motion preference */
+  /* Dark/light is usually handled by the JavaScript, but this is a good solution for if it is disabled  */
+  /* I am just reapplying the same body styles */
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: var(--watchdog-white);
+      background-color: var(--truth-text);
+    }
+  }
 
+  @media (prefers-color-scheme: light) {
+    body {
+      color: var(--truth-text);
+      background-color: var(--watchdog-white);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --transition: none;
+    }
+
+    header nav a:hover,
+    header nav a:focus,
+    footer a:hover,
+    footer a:focus {
+      padding: var(--button-link);
+    }
+
+    article:hover,
+    article:focus {
+      transform: none;
+    }
+  }
 
 /* ///ADD///  Feature Query for :has() that checks if the #menu-toggle is checked */
 @supports (selector(:has(*))) {
