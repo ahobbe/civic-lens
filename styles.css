@@ -87,10 +87,13 @@
     background-color: var(--truth-text);
   }
 
-  #theme-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  #theme-toggle { 
+    height: 3rem;
+    position: fixed;
+    bottom: 0; /* Moved from top to bottom to make room for menu and since theme switching isn't as much of a priority on mobile */
+    right: 0;
+    margin: 1rem;
+
     background-color: var(--watchdog-white);
     border: 1px solid var(--blue-bulletin);
     border-radius: 1.5rem;
@@ -133,8 +136,61 @@
 
 /* Navigation Styles */
   /* I would rather have these and the skip link styles lower down, but I will leave them the way they were assigned */
-  nav label {
-    display: none; /* Temporarily out of the way */
+  header > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header > div div {
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-button {
+    padding: var(--button-link);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    background-color: var(--news-flash);
+
+    transition: var(--transition);
+  }
+
+  .menu-button:hover {
+    cursor: pointer;
+  }
+
+  .menu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+
+    flex-direction: column;
+
+    overflow: hidden;
+    text-align: center;
+
+    background-color: var(--blue-bulletin);
+  }
+
+  header nav a {
+    display: block;
+    width: 100%;
+  }
+
+  header nav ul {
+    max-height: 0; /* Hidden */
+  }
+
+  header nav input:checked ~ ul {
+    max-height: 100rem;
   }
 
 /* Global Styles */
@@ -186,6 +242,12 @@
     text-decoration: underline;
   }
 
+  .tagline {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-stretch: semi-condensed; /* This looks skinnier to me than everything else */
+  }
+
   /* Header/Footer */
     /* These are essentially the same so I am lumping them together for the most part */
     header,
@@ -197,8 +259,6 @@
     header nav ul,
     footer ul {
       display: flex;
-      gap: 1.25rem;
-
       margin: 2rem 0 1.6875rem;
     }
 
@@ -209,7 +269,6 @@
       text-transform: uppercase;
 
       color: var(--watchdog-white);
-      background: var(--news-flash);
 
       transition: var(--transition);
     }
@@ -220,19 +279,18 @@
     footer a:focus {
       text-decoration: none;
       background-color: var(--story-subtitle);
-      padding: calc(0.5625rem + 0.25rem) calc(0.4375rem + 0.25rem);
     }
 
-    header div {
-      padding-top: 1rem;
+    header {
+      padding-bottom: 0.5rem;;
     }
 
     header p {
-      font-family: var(--font-heading);
-      font-weight: bold;
-      font-stretch: semi-condensed; /* This looks skinnier to me than everything else */
-
       line-height: 1.25;
+    }
+
+    header nav a {
+      text-transform: uppercase;
     }
 
     footer {
@@ -243,7 +301,16 @@
     footer ul {
       margin: 0.75rem 0;
       flex-wrap: wrap;
-      row-gap: 2.25rem;
+      gap: 2.25rem 1.25rem;
+    }
+
+    footer a {
+      background: var(--news-flash);
+    }
+
+    footer a:hover,
+    footer a:focus {
+      padding: calc(0.5625rem + 0.25rem) calc(0.4375rem + 0.25rem);
     }
 
     footer small {
@@ -255,7 +322,7 @@
 
   /* Main */
     main {
-      margin: 1.875rem auto 0;
+      margin: 2rem auto 0;
     }
     
     section {
@@ -268,10 +335,6 @@
 
     blockquote {
       padding: 1.125rem 1.25rem 1.25rem;
-
-      font-family: var(--font-heading);
-      font-weight: bold;
-      font-stretch: semi-condensed; /* This also looks skinnier to me */
       text-align: center;
     }
 
@@ -329,7 +392,7 @@
       grid-template-columns: 1fr;
       gap: 1rem 0.375rem;
 
-      margin: 0.5rem 0.5rem 2rem;
+      margin: 0.5rem 0.5rem 1.5rem;
       padding: 1rem;
 
       border: var(--border);
@@ -361,7 +424,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
-      padding: 0.25rem 0.25rem 0.75rem;
+      padding: 0.25rem 0.25rem 1rem;
 
       border: var(--border);
       border-color: var(--truth-text);
@@ -425,6 +488,54 @@
 
 /* Large styles 920px */
   @media screen and (min-width: 920px) {
+    #theme-toggle {
+      position: absolute;
+      top: 0;
+    }
+
+    header > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    header > div div {
+      padding: 1.0625rem 0 1rem;
+    }
+
+    .menu-toggle,
+    .menu-button {
+      display: none; /* Not needed by screen reader */
+    }
+
+    .menu {
+      position: relative;
+      margin: 0;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+      left: 0;
+      top: 0;
+      flex-direction: row;
+    }
+
+    header nav ul {
+      max-height: 100rem;
+      gap: 1.25rem;
+    }
+
+    header nav a {
+      display: inline;
+    }
+
+    header nav a {
+      background: var(--news-flash);
+    }
+
+    header nav a:hover,
+    header nav a:focus {
+      padding: calc(0.5625rem + 0.25rem) calc(0.4375rem + 0.25rem);
+    }
+
     #breaking-news div {
       flex-direction: row;
     }
