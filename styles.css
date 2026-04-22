@@ -593,5 +593,15 @@
 
 /* ///ADD///  Feature Query for :has() that checks if the #menu-toggle is checked */
 @supports (selector(:has(*))) {
+  /* Only for mobile menu */
+  @media screen and (max-width: 920px) {
+    /* Change room around header based on menu being open so it doesn't cover text */
+    header:has(#menu-toggle:checked) {
+      margin-bottom: 10rem;
+    }
 
+    header:has(#menu-toggle:not(:checked)) {
+      padding-bottom: 1.75rem;
+    }
+  }
 }
