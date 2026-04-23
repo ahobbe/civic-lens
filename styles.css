@@ -282,7 +282,7 @@
     }
 
     header {
-      padding-bottom: 0.5rem;;
+      padding-bottom: 0.5rem;
     }
 
     header p {
@@ -503,7 +503,7 @@
       padding: 1.0625rem 0 1rem;
     }
 
-    .menu-toggle,
+    #menu-toggle,
     .menu-button {
       display: none; /* Not needed by screen reader */
     }
@@ -591,17 +591,18 @@
     }
   }
 
-/* ///ADD///  Feature Query for :has() that checks if the #menu-toggle is checked */
-@supports (selector(:has(*))) {
-  /* Only for mobile menu */
-  @media screen and (max-width: 920px) {
-    /* Change room around header based on menu being open so it doesn't cover text */
-    header:has(#menu-toggle:checked) {
-      margin-bottom: 10rem;
-    }
+/* Feature Query for :has() that checks if the #menu-toggle is checked */
+  /* The validator (https://validator.w3.org/nu/) flags all "@supports (selector())" code as a parse error */
+  @supports (selector(:has(*))) {
+    /* Only for mobile menu */
+    @media screen and (max-width: 920px) {
+      /* Change room around header based on menu being open so it doesn't cover text */
+      header:has(#menu-toggle:checked) {
+        margin-bottom: 10rem;
+      }
 
-    header:has(#menu-toggle:not(:checked)) {
-      padding-bottom: 1.75rem;
+      header:has(#menu-toggle:not(:checked)) {
+        padding-bottom: 1.75rem;
+      }
     }
   }
-}
