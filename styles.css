@@ -156,13 +156,16 @@
     font-weight: bold;
     text-transform: uppercase;
 
+    border: var(--border) var(--news-flash);
     background-color: var(--news-flash);
 
     transition: var(--transition);
   }
 
-  .menu-button:hover {
+  .menu-button:hover,
+  .menu-button:focus {
     cursor: pointer;
+    background-color: var(--blue-bulletin);
   }
 
   .menu {
@@ -305,12 +308,14 @@
     }
 
     footer a {
-      background: var(--news-flash);
+      border: var(--border);
+      border-color: var(--news-flash);
+      background-color: var(--news-flash);
     }
 
     footer a:hover,
     footer a:focus {
-      padding: calc(0.5625rem + 0.25rem) calc(0.4375rem + 0.25rem);
+      background-color: var(--blue-bulletin);
     }
 
     footer small {
@@ -342,7 +347,7 @@
       article {
         padding: 0.6875rem 1rem;
 
-        border: var(--border);
+        border: var(--border) var(--story-subtitle);
         box-shadow: var(--shadow);
 
         transition: var(--transition);
@@ -386,6 +391,10 @@
         margin: 1.125rem 0.5rem 2.25rem;
       }
 
+      #featured-articles h3 {
+        border-color: var(--story-subtitle);
+      }
+
     /* Form */
     form {
       display: grid;
@@ -395,8 +404,7 @@
       margin: 0.5rem 0.5rem 1.5rem;
       padding: 1rem;
 
-      border: var(--border);
-      border-color: var(--truth-text);
+      border: var(--border) var(--truth-text);
 
       color: var(--watchdog-white);
       background-color: var(--news-flash);
@@ -414,8 +422,7 @@
       width: calc(100% - 0.5rem); /* Leave room for padding */
       height: 2.5rem;
 
-      border: var(--border);
-      border-color: var(--truth-text);
+      border: var(--border) var(--truth-text); /* Not added in mockup but I think it looks nice */
     }
 
     fieldset {
@@ -426,8 +433,7 @@
       gap: 1rem;
       padding: 0.25rem 0.25rem 1rem;
 
-      border: var(--border);
-      border-color: var(--truth-text);
+      border: var(--border) var(--truth-text); /* This is blue-bulletin in the mockup but I like it better as truth-text */
     }
 
     legend {
@@ -446,11 +452,16 @@
     input[type="checkbox"] {
       width: 1.125rem;
       height: 1.125rem;
+      /* I know the border color and radius doesn't match the rest of the form, but the examples didn't create a brand new checkbox so I won't either */
     }
 
     input[type="checkbox"]:hover,
     fieldset label {
       cursor: pointer;
+    }
+
+    input[type="checkbox"]:checked {
+      accent-color: var(--blue-bulletin);
     }
 
     input[type="submit"] { /* The text for this was not styled at all in the mockup :| */
@@ -465,18 +476,25 @@
 
       color: var(--watchdog-white);
       background-color: var(--blue-bulletin);
+
+      transition: var(--transition);
     }
 
     input[type="submit"]:hover,
     input[type="submit"]:focus {
       cursor: pointer;
 
-      background: var(--story-subtitle);
+      color: var(--truth-text);
+      background-color: var(--watchdog-white);
     }
 
 /* All sizing adjustments are purely vibes based and have 0 logical backing */
 /* Medium styles 620px */
   @media screen and (min-width: 620px) {
+    #breaking-news div {
+      flex-direction: row;
+    }
+
     #featured-articles div {
       grid-template-columns: 1fr 1fr;
     }
@@ -528,16 +546,21 @@
     }
 
     header nav a {
-      background: var(--news-flash);
+      border: var(--border) var(--news-flash);
+      background-color: var(--news-flash);
     }
 
     header nav a:hover,
     header nav a:focus {
-      padding: calc(0.5625rem + 0.25rem) calc(0.4375rem + 0.25rem);
+      background-color: var(--blue-bulletin);
     }
 
-    #breaking-news div {
-      flex-direction: row;
+    #featured-articles div {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    fieldset {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     form {
@@ -546,13 +569,10 @@
   }
 
 /* XL styles 1024px */
+  /* There's no mockup for XL so this one is just off vibes */
   @media screen and (min-width: 1024px) {
-    #featured-articles div {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
     fieldset {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
