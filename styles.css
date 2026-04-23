@@ -203,7 +203,7 @@
   header div,
   main,
   footer div {
-    max-width: 1035px; /* This was the size necessary to match the mockup according to me eyeballing it */
+    max-width: 1093px; /* This was the size necessary to match the mockup according to me eyeballing it */
     margin: 0 auto;
     padding: 0 1.625rem;
   }
@@ -613,8 +613,25 @@
 
 /* Large styles 920px */
   @media screen and (min-width: 920px) {
+    header div,
+    main,
+    footer div {
+      padding: 0 2.25rem;
+    }
+
+    #breaking-news div,
+    #featured-articles div {
+      margin: 1.125rem 0.375rem;
+      gap: 1.4375rem;
+    }
+
     #featured-articles div {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    form {
+      margin-left: 0.375rem;
+      margin-right: 0.375rem;
     }
 
     fieldset {
