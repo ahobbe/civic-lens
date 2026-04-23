@@ -59,6 +59,11 @@
     border-spacing: 0;
   }
 
+  /* My Reset */
+  * {
+    box-sizing: border-box;
+  }
+
 /* Root Variables */
   :root {
     --blue-bulletin: #1D3557;
@@ -72,8 +77,10 @@
     --transition: all 0.5s ease;
 
     /* Mine */
-    --button-link: 0.5625rem 0.4375rem;
-    --border: 0.125rem solid;
+    --button-width: 0.375rem;
+    --button-height: 0.46875rem;
+    --button-link: var(--button-height) var(--button-width);
+    --border: 0.0625rem solid;
   }
 
 /* Light/Dark Mode Styles */
@@ -87,13 +94,10 @@
     background-color: var(--truth-text);
   }
 
-  #theme-toggle { 
-    height: 3rem;
-    position: fixed;
-    bottom: 0; /* Moved from top to bottom to make room for menu and since theme switching isn't as much of a priority on mobile */
-    right: 0;
-    margin: 1rem;
-
+  #theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     background-color: var(--watchdog-white);
     border: 1px solid var(--blue-bulletin);
     border-radius: 1.5rem;
@@ -136,25 +140,15 @@
 
 /* Navigation Styles */
   /* I would rather have these and the skip link styles lower down, but I will leave them the way they were assigned */
-  header > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  header > div div {
-    position: relative;
-    margin: 0;
-    padding: 0;
-  }
-
   .menu-button {
-    padding: var(--button-link);
+    display: block;
+    width: 100%;
+    margin-top: 0.875rem;
+    padding: var(--button-height) 0;
 
-    font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: center;
 
     border: var(--border) var(--news-flash);
     background-color: var(--news-flash);
@@ -172,10 +166,8 @@
     position: absolute;
     left: 0;
     width: 100%;
-    margin-top: 1.75rem;
-    padding-top: 1rem;
-
-    flex-direction: column;
+    /* margin-top: 1.75rem; */
+    /* padding-top: 1rem; */
 
     overflow: hidden;
     text-align: center;
@@ -213,27 +205,37 @@
   footer div {
     max-width: 1035px; /* This was the size necessary to match the mockup according to me eyeballing it */
     margin: 0 auto;
-    padding: 0 2.5rem;
+    padding: 0 1.625rem;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-heading);
-    font-weight: 500; /* Using Medium because Bold looks much darker than the mockup */
-    font-variation-settings: "wdth" 112; /* They also look slightly wider */
+  }
+
+  h1,
+  h2 {
+    font-variation-settings: "wdth" 105; /* They look slightly wider */
   }
 
   h1 {
     font-size: 3rem;
+    font-weight: 350;
   }
 
   h2 {
     font-size: 1.5rem;
   }
 
+  h2,
+  h3 {
+    font-weight: 385; /* Using Medium-ish because Bold looks much darker than the mockup */
+  }
+
   h3 {
     font-size: 1.25rem;
+    font-variation-settings: "wdth" 104;
   }
 
   a {
@@ -247,7 +249,7 @@
 
   .tagline {
     font-family: var(--font-heading);
-    font-weight: bold;
+    font-weight: 540; /* Using Medium-ish because SemiBold looks much darker than the mockup */
     font-stretch: semi-condensed; /* This looks skinnier to me than everything else */
   }
 
@@ -262,13 +264,13 @@
     header nav ul,
     footer ul {
       display: flex;
-      margin: 2rem 0 1.6875rem;
+      /* margin: 2rem 0 1.6875rem; */
     }
 
     header nav a,
     footer a {
       padding: var(--button-link);
-      font-weight: bold;
+      font-weight: 580; /* Almost SemiBold */
       text-transform: uppercase;
 
       color: var(--watchdog-white);
@@ -285,10 +287,11 @@
     }
 
     header {
-      padding-bottom: 0.5rem;
+      padding: 1rem 0;
     }
 
     header p {
+      padding-left: 0.125rem;
       line-height: 1.25;
     }
 
@@ -298,13 +301,14 @@
 
     footer {
       margin-top: auto; /* Keep at bottom */
-      padding-top: 2rem;
+      padding: 2.5625rem 0 1rem;
     }
 
     footer ul {
-      margin: 0.75rem 0;
+      margin: 0.6875rem 0 0.6875rem 0.125rem;
       flex-wrap: wrap;
-      gap: 2.25rem 1.25rem;
+      gap: 2.125rem 1.125rem;
+      /* gap: 2.25rem 1.25rem; */
     }
 
     footer a {
@@ -320,18 +324,23 @@
 
     footer small {
       display: block;
-      margin: 2.5rem 0 1rem;
+      margin-top: 2.5rem;
 
       text-align: center;
     }
 
   /* Main */
     main {
-      margin: 2rem auto 0;
+      margin: 1.5rem auto;
     }
-    
-    section {
-      margin: 0.75rem 0;
+
+    main p,
+    small {
+      font-weight: 340; /* Light-ish */
+    }
+
+    main section:first-of-type {
+      margin-top: 1.125rem;
     }
 
     main section:first-of-type p {
@@ -339,13 +348,13 @@
     }
 
     blockquote {
-      padding: 1.125rem 1.25rem 1.25rem;
+      margin-top: 1.0625rem;
       text-align: center;
     }
 
     /* Articles */
       article {
-        padding: 0.6875rem 1rem;
+        padding: 1rem 1rem 0.75rem;
 
         border: var(--border) var(--story-subtitle);
         box-shadow: var(--shadow);
@@ -355,21 +364,28 @@
 
       article h3 {
         margin-bottom: 0.5rem;
-        padding-bottom: 0.25rem;
         border-bottom: var(--border);
       }
 
       article:hover,
       article:focus {
         cursor: pointer; /* I am making these appear clickable because I would guess in a real site, interacting with them would take you to the full article */
-        transform: scale(1.0625);
+        transform: scale(1.03125);
+      }
+
+      #breaking-news {
+        margin-top: 1.75rem;
+      }
+
+      #breaking-news div,
+      #featured-articles div {
+        margin: 0.125rem 0.46875rem;
       }
 
       #breaking-news div {
         display: flex;
         flex-direction: column;
-        gap: 1.625rem;
-        margin: 1.125rem 0.5rem 2.25rem;
+        gap: 0.5rem;
       }
 
       #breaking-news article {
@@ -384,25 +400,38 @@
         height: auto;
       }
 
+      #featured-articles {
+        margin-top: 1.5rem;
+      }
+
       #featured-articles div {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1.625rem;
-        margin: 1.125rem 0.5rem 2.25rem;
+        gap: 0.5rem;
+      }
+
+      #featured-articles article {
+        padding-bottom: 1rem;
       }
 
       #featured-articles h3 {
         border-color: var(--story-subtitle);
       }
 
+      #alerts {
+        margin-top: 1.5rem;
+      }
+
+      #alerts p {
+        margin-top: 0.125rem;
+      }
+
     /* Form */
     form {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem 0.375rem;
-
-      margin: 0.5rem 0.5rem 1.5rem;
-      padding: 1rem;
+      margin: 0.5rem 0.46875rem 0;
+      padding: 1rem 1rem 2rem;
 
       border: var(--border) var(--truth-text);
 
@@ -419,10 +448,14 @@
     input[type="text"],
     input[type="tel"] {
       display: block;
-      width: calc(100% - 0.5rem); /* Leave room for padding */
-      height: 2.5rem;
+      width: 100%;
+      height: 2.6875rem;
 
       border: var(--border) var(--truth-text); /* Not added in mockup but I think it looks nice */
+    }
+
+    form > div:nth-of-type(2) { /* Phone number */
+      padding-top: 1rem;
     }
 
     fieldset {
@@ -430,16 +463,18 @@
 
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 0.25rem 0.25rem 1rem;
+      gap: 0.75rem;
+      margin: 0.75rem 0 1rem;
+      padding: 0.25rem 0.25rem 0.75rem;
 
       border: var(--border) var(--truth-text); /* This is blue-bulletin in the mockup but I like it better as truth-text */
     }
 
     legend {
       grid-column: 1 / -1;
-      margin-left: 0.375rem;
+      margin-left: 0.25rem;
 
+      font-weight: 450;
       text-transform: uppercase;
     }
 
@@ -450,8 +485,8 @@
     }
 
     input[type="checkbox"] {
-      width: 1.125rem;
-      height: 1.125rem;
+      width: 1.25rem;
+      height: 1.25rem;
       /* I know the border color and radius doesn't match the rest of the form, but the examples didn't create a brand new checkbox so I won't either */
     }
 
@@ -466,10 +501,9 @@
 
     input[type="submit"] { /* The text for this was not styled at all in the mockup :| */
       grid-column: 1 / -1;
-      height: 3rem;
-      margin: 0.5rem 0 1rem;
+      height: 3.125rem;
 
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       text-transform: uppercase;
 
       border-color: var(--truth-text); /* The mockup didn't change this, but I am */
@@ -518,7 +552,7 @@
     }
 
     header > div div {
-      padding: 1.0625rem 0 1rem;
+      /* padding: 1.0625rem 0 1rem; */
     }
 
     #menu-toggle,
@@ -529,8 +563,8 @@
     .menu {
       position: relative;
       margin: 0;
-      padding-right: 1rem;
-      padding-bottom: 1rem;
+      /* padding-right: 1rem; */
+      /* padding-bottom: 1rem; */
       left: 0;
       top: 0;
       flex-direction: row;
@@ -538,7 +572,7 @@
 
     header nav ul {
       max-height: 100rem;
-      gap: 1.25rem;
+      /* gap: 1.25rem; */
     }
 
     header nav a {
@@ -602,7 +636,7 @@
     header nav a:focus,
     footer a:hover,
     footer a:focus {
-      padding: var(--button-link);
+      /* padding: var(--button-link); */
     }
 
     article:hover,
@@ -614,15 +648,5 @@
 /* Feature Query for :has() that checks if the #menu-toggle is checked */
   /* The validator (https://validator.w3.org/nu/) flags all "@supports (selector())" code as a parse error */
   @supports (selector(:has(*))) {
-    /* Only for mobile menu */
-    @media screen and (max-width: 920px) {
-      /* Change room around header based on menu being open so it doesn't cover text */
-      header:has(#menu-toggle:checked) {
-        margin-bottom: 10rem;
-      }
 
-      header:has(#menu-toggle:not(:checked)) {
-        padding-bottom: 1.75rem;
-      }
-    }
   }
