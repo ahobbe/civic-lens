@@ -146,7 +146,7 @@
     margin-top: 0.875rem;
     padding: var(--button-height) 0;
 
-    font-weight: bold;
+    font-weight: 580;
     text-transform: uppercase;
     text-align: center;
 
@@ -164,24 +164,39 @@
 
   .menu {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     left: 0;
     width: 100%;
-    /* margin-top: 1.75rem; */
-    /* padding-top: 1rem; */
 
     overflow: hidden;
     text-align: center;
-
-    background-color: var(--blue-bulletin);
   }
 
   header nav a {
     display: block;
-    width: 100%;
+    width: calc(100% - 3.125rem);
+    margin: 0 auto;
+
+    border: var(--border) var(--blue-bulletin); /* This border is ugly :( but what was requested */
+    background-color: var(--news-flash);
   }
 
   header nav ul {
     max-height: 0; /* Hidden */
+  }
+
+  header nav input { /* Checkbox is only visible to screen readers */
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  header nav input:focus ~ .menu-button {
+    background-color: var(--blue-bulletin);
   }
 
   header nav input:checked ~ ul {
@@ -283,7 +298,7 @@
     footer a:hover,
     footer a:focus {
       text-decoration: none;
-      background-color: var(--story-subtitle);
+      background-color: var(--blue-bulletin);
     }
 
     header {
@@ -315,11 +330,6 @@
       border: var(--border);
       border-color: var(--news-flash);
       background-color: var(--news-flash);
-    }
-
-    footer a:hover,
-    footer a:focus {
-      background-color: var(--blue-bulletin);
     }
 
     footer small {
@@ -527,14 +537,12 @@
   @media screen and (min-width: 620px) {
     #menu-toggle,
     .menu-button {
-      display: none; /* Not needed by screen reader */
+      display: none; /* Not needed by screen reader since menu is already visible */
     }
 
     .menu {
       position: relative;
       margin: 0;
-      /* padding-right: 1rem; */
-      /* padding-bottom: 1rem; */
       left: 0;
       top: 0;
       flex-direction: row;
@@ -550,6 +558,7 @@
     }
 
     header nav a {
+      width: 100%;
       padding: var(--button-link);
       border: var(--border) var(--news-flash);
       background-color: var(--news-flash);
@@ -648,7 +657,7 @@
   }
 
 /* Interaction queries for color scheme light and dark and motion preference */
-  /* Dark/light is usually handled by the JavaScript, but this is a good solution for if it is disabled  */
+  /* Dark/light is generally handled by the JavaScript, but this is a good solution for if it is disabled  */
   /* I am just reapplying the same body styles */
   @media (prefers-color-scheme: dark) {
     body {
@@ -669,13 +678,6 @@
       --transition: none;
     }
 
-    header nav a:hover,
-    header nav a:focus,
-    footer a:hover,
-    footer a:focus {
-      /* padding: var(--button-link); */
-    }
-
     article:hover,
     article:focus {
       transform: none;
@@ -685,5 +687,17 @@
 /* Feature Query for :has() that checks if the #menu-toggle is checked */
   /* The validator (https://validator.w3.org/nu/) flags all "@supports (selector())" code as a parse error */
   @supports (selector(:has(*))) {
+    /* Only for mobile menu */
+    @media screen and (max-width: 920px) {
+      /* Change room around header based on menu being open so it doesn't cover text */
+      /* This wasn't done in the mockup, but it makes it so if you open the menu with
+         the keyboard it doesn't block the text and require you to go back and close it */
+      header:has(#menu-toggle:checked) {
+        margin-bottom: 8rem;
+      }
 
+      header:has(#menu-toggle:not(:checked)) {
+        padding-bottom: 1.75rem;
+      }
+    }
   }
