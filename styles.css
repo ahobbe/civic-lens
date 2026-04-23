@@ -139,7 +139,6 @@
   }
 
 /* Navigation Styles */
-  /* I would rather have these and the skip link styles lower down, but I will leave them the way they were assigned */
   .menu-button {
     display: block;
     width: 100%;
@@ -178,7 +177,7 @@
     width: calc(100% - 3.125rem);
     margin: 0 auto;
 
-    border: var(--border) var(--blue-bulletin); /* This border is ugly :( but what was requested */
+    border: var(--border) var(--blue-bulletin);
     background-color: var(--news-flash);
   }
 
@@ -279,7 +278,6 @@
     header nav ul,
     footer ul {
       display: flex;
-      /* margin: 2rem 0 1.6875rem; */
     }
 
     header nav a,
@@ -323,7 +321,6 @@
       margin: 0.6875rem 0 0.6875rem 0.125rem;
       flex-wrap: wrap;
       gap: 2.125rem 1.125rem;
-      /* gap: 2.25rem 1.25rem; */
     }
 
     footer a {
@@ -379,7 +376,7 @@
 
       article:hover,
       article:focus {
-        cursor: pointer; /* I am making these appear clickable because I would guess in a real site, interacting with them would take you to the full article */
+        cursor: pointer;
         transform: scale(1.03125);
       }
 
@@ -461,7 +458,7 @@
       width: 100%;
       height: 2.6875rem;
 
-      border: var(--border) var(--truth-text); /* Not added in mockup but I think it looks nice */
+      border: var(--border) var(--truth-text);
     }
 
     form > div:nth-of-type(2) { /* Phone number */
@@ -477,7 +474,7 @@
       margin: 0.75rem 0 1rem;
       padding: 0.25rem 0.25rem 0.75rem;
 
-      border: var(--border) var(--truth-text); /* This is blue-bulletin in the mockup but I like it better as truth-text */
+      border: var(--border) var(--truth-text);
     }
 
     legend {
@@ -497,7 +494,6 @@
     input[type="checkbox"] {
       width: 1.25rem;
       height: 1.25rem;
-      /* I know the border color and radius doesn't match the rest of the form, but the examples didn't create a brand new checkbox so I won't either */
     }
 
     input[type="checkbox"]:hover,
@@ -509,14 +505,14 @@
       accent-color: var(--blue-bulletin);
     }
 
-    input[type="submit"] { /* The text for this was not styled at all in the mockup :| */
+    input[type="submit"] {
       grid-column: 1 / -1;
       height: 3.125rem;
 
       font-size: 1.125rem;
       text-transform: uppercase;
 
-      border-color: var(--truth-text); /* The mockup didn't change this, but I am */
+      border-color: var(--truth-text);
 
       color: var(--watchdog-white);
       background-color: var(--blue-bulletin);
@@ -532,7 +528,6 @@
       background-color: var(--watchdog-white);
     }
 
-/* All sizing adjustments are purely vibes based and have 0 logical backing */
 /* Medium styles 620px */
   @media screen and (min-width: 620px) {
     #menu-toggle,
@@ -657,8 +652,10 @@
   }
 
 /* Interaction queries for color scheme light and dark and motion preference */
-  /* Dark/light is generally handled by the JavaScript, but this is a good solution for if it is disabled  */
-  /* I am just reapplying the same body styles */
+  /*
+    Dark/light is handled by the JavaScript, but this is a good solution for if it is disabled
+    I am just reapplying the same body styles from the earlier dark/lgiht styles
+  */
   @media (prefers-color-scheme: dark) {
     body {
       color: var(--watchdog-white);
@@ -685,13 +682,19 @@
   }
 
 /* Feature Query for :has() that checks if the #menu-toggle is checked */
-  /* The validator (https://validator.w3.org/nu/) flags all "@supports (selector())" code as a parse error */
+  /*
+    IMPORTANT
+    The validator (https://validator.w3.org/nu/) flags all "@supports (selector())" code
+    as a parse error wherever the closing } for it is (Line 706 for me).
+  */
   @supports (selector(:has(*))) {
-    /* Only for mobile menu */
-    @media screen and (max-width: 920px) {
-      /* Change room around header based on menu being open so it doesn't cover text */
-      /* This wasn't done in the mockup, but it makes it so if you open the menu with
-         the keyboard it doesn't block the text and require you to go back and close it */
+    @media screen and (max-width: 620px) { /* Only for mobile menu */
+      /*
+        This wasn't done in the mockup, but it makes it so if you open the menu with
+        the keyboard it doesn't block the text and require you to go back and close it.
+        It was unclear what I was supposed to do here, but hopefully this shows I
+        know how to fill out a @supports feature query.
+       */
       header:has(#menu-toggle:checked) {
         margin-bottom: 8rem;
       }
