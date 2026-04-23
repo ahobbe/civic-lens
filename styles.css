@@ -525,36 +525,6 @@
 /* All sizing adjustments are purely vibes based and have 0 logical backing */
 /* Medium styles 620px */
   @media screen and (min-width: 620px) {
-    #breaking-news div {
-      flex-direction: row;
-    }
-
-    #featured-articles div {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    fieldset {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-/* Large styles 920px */
-  @media screen and (min-width: 920px) {
-    #theme-toggle {
-      position: absolute;
-      top: 0;
-    }
-
-    header > div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    header > div div {
-      /* padding: 1.0625rem 0 1rem; */
-    }
-
     #menu-toggle,
     .menu-button {
       display: none; /* Not needed by screen reader */
@@ -570,16 +540,17 @@
       flex-direction: row;
     }
 
+    header nav {
+      margin-top: 1.375rem;
+    }
+
     header nav ul {
       max-height: 100rem;
-      /* gap: 1.25rem; */
+      gap: 1.125rem;
     }
 
     header nav a {
-      display: inline;
-    }
-
-    header nav a {
+      padding: var(--button-link);
       border: var(--border) var(--news-flash);
       background-color: var(--news-flash);
     }
@@ -589,16 +560,65 @@
       background-color: var(--blue-bulletin);
     }
 
+    header div,
+    main,
+    footer div {
+      padding: 0 2.5rem;
+    }
+
+    blockquote {
+      margin-top: 1.125rem;
+    }
+
+    #breaking-news div,
+    #featured-articles div {
+      margin: 1.125rem 0.53125rem;
+      gap: 1.4375rem;
+    }
+
+    #breaking-news div {
+      flex-direction: row;
+    }
+
+    #breaking-news article {
+      max-width: calc(50% - (1.4375rem / 2));
+    }
+
+    #featured-articles {
+      margin-top: 2.125rem;
+    }
+
+    #featured-articles div {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #alerts {
+      margin-top: 2.1875rem;
+    }
+
+    form {
+      margin: 0.4375rem 0.53125rem 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 0.25rem;
+    }
+
+    form > div:nth-of-type(2) { /* Phone number */
+      padding-top: 0;
+    }
+
+    fieldset {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+/* Large styles 920px */
+  @media screen and (min-width: 920px) {
     #featured-articles div {
       grid-template-columns: repeat(3, 1fr);
     }
 
     fieldset {
       grid-template-columns: repeat(3, 1fr);
-    }
-
-    form {
-      grid-template-columns: 1fr 1fr;
     }
   }
 
